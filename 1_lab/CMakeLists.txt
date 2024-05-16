@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
         File.cpp
         FileLogger.cpp
         FileLogger.h
+        FileWatcher.cpp
+        FileWatcher.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

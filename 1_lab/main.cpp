@@ -1,10 +1,16 @@
 #include <QCoreApplication>
-#include "file.h"
+#include "FileWatcher.h"
+#include <QDebug>
+#include <QStringList>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    QString filePath = "C:/Users/Asus/Desktop/123.txt";
-    File file(filePath);
+    QStringList filePaths = {
+        "C:/Users/Asus/Desktop/456.txt",
+        "C:/Users/Asus/Desktop/123.txt",
+    };
+    int checkIntervalMs = 10000;
+    FileWatcher watcher(filePaths, checkIntervalMs);
     return a.exec();
 }

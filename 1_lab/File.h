@@ -9,7 +9,7 @@ public:
     File(const QString &filePath);
     QString getFilePath() const;
     qint64 getSize() const;
-    QDateTime getLastModified() const; // Add this line
+    QDateTime getLastModified() const;
     bool exists() const;
 
 private:
