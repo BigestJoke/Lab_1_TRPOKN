@@ -33,17 +33,3 @@ void FileWatcher::onFileChanged() {
         }
     }
 }
-
-//add file to watch
-void FileWatcher::addFile(const QString &filePath) {
-    watchedFiles.append(File(filePath));
-}
-//remove file to watch
-void FileWatcher::removeFile(const QString &filePath) {
-    for (int i = 0; i < watchedFiles.size(); ++i) {
-        if (watchedFiles[i].getFilePath() == filePath) {
-            watchedFiles.removeAt(i);
-            break;
-        }
-    }
-}

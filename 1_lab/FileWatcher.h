@@ -12,8 +12,6 @@ class FileWatcher : public QObject {
 
 public:
     FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = 0);
-    void addFile(const QString &filePath);
-    void removeFile(const QString &filePath);
 
 private slots:
     void onFileChanged(); // Обработка изменений в файлах
