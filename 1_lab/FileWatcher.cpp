@@ -2,8 +2,7 @@
 #include <QDateTime>
 #include <QDebug>
 
-FileWatcher::FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent)
-    : QObject(parent), checkIntervalMs(checkIntervalMs)
+FileWatcher::FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent): QObject(parent), checkIntervalMs(checkIntervalMs)
 {
     for (const QString &filePath : filePaths) {
         watchedFiles.append(File(filePath));
@@ -21,7 +20,7 @@ FileWatcher::FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObj
 }
 
 void FileWatcher::onFileChanged() {
-    for (File &fileData : watchedFiles) {  // Use a reference to modify directly
+    for (File &fileData : watchedFiles) {
         File newFileData(fileData.getFilePath());
 
         if (newFileData.exists() != fileData.exists()) {

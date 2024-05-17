@@ -11,18 +11,18 @@ class FileWatcher : public QObject {
     Q_OBJECT
 
 public:
-    explicit FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = nullptr);
+    FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = 0);
     void addFile(const QString &filePath);
     void removeFile(const QString &filePath);
 
 private slots:
-    void onFileChanged();
+    void onFileChanged(); // Обработка изменений в файлах
 
 private:
-    QTimer timer;
-    QList<File> watchedFiles;
+    QTimer timer; // Таймер для регулярной проверки состояния файлов
+    QList<File> watchedFiles;// Список отслеживаемых файлов
     FileLogger logger;
-    int checkIntervalMs;
+    int checkIntervalMs;// Интервал проверки состояния файлов
 };
 
 #endif // FILEWATCHER_H
