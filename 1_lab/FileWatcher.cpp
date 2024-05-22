@@ -1,35 +1,27 @@
 #include "FileWatcher.h"
-#include <QDateTime>
-#include <QDebug>
 
-FileWatcher::FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent): QObject(parent), checkIntervalMs(checkIntervalMs)
+FileWatcher::FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent)
+    : QObject(parent), checkIntervalMs(checkIntervalMs)
 {
     for (const QString &filePath : filePaths) {
         watchedFiles.append(File(filePath));
-
-
-        File &fileData = watchedFiles.last();
-        if (fileData.exists()) {
-            qDebug() << "File exists:" << fileData.getFilePath() << " Size:" << fileData.getSize();
-        } else {
-            qDebug() << "File does not exist:" << fileData.getFilePath();
-        }
     }
-    connect(&timer, &QTimer::timeout, this, &FileWatcher::onFileChanged);
+    connect(&timer, &QTimer::timeout, this, &FileWatcher::checkFiles);
     timer.start(checkIntervalMs);
 }
 
-void FileWatcher::onFileChanged() {
-    for (File &fileData : watchedFiles) {
-        File newFileData(fileData.getFilePath());
+void FileWatcher::checkFiles() {
+    for (File &file : watchedFiles) {
+        File newFileData(file.getFilePath());
 
-        if (newFileData.exists() != fileData.exists()) {
-            logger.logFileExistence(newFileData);
-            fileData = newFileData; // Update the existing FileData object
-        } else if (newFileData.exists() && (newFileData.getLastModified() != fileData.getLastModified() ||
-                                            newFileData.getSize() != fileData.getSize())) {
-            logger.logFileChange(newFileData);
-            fileData = newFileData; // Update the existing FileData object
+        if (newFileData.exists() != file.exists()) {
+            emit fileExistenceChanged(newFileData);
+            file = newFileData;
+        } else if (newFileData.exists() &&
+                   (newFileData.getLastModified() != file.getLastModified() ||
+                    newFileData.getSize() != file.getSize())) {
+            emit fileChanged(newFileData);
+            file = newFileData;
         }
     }
 }

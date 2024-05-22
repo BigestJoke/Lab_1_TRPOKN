@@ -3,19 +3,18 @@
 
 #include <QString>
 #include <QFileInfo>
+#include <QDateTime>
 
 class File {
 public:
-
-    File(const QString &filePath);  // Конструктор
-
-    QString getFilePath() const;// Получение пути к файлу
-    qint64 getSize() const; // Получение размера файла
-    QDateTime getLastModified() const; // Получение времени последнего изменения файла
-    bool exists() const;  // Проверка существования файла
+    File(const QString &filePath);
+    QString getFilePath() const;
+    qint64 getSize() const;
+    QDateTime getLastModified() const;
+    bool exists() const;
 
 private:
     QFileInfo fileInfo;
 };
 
-#endif
+#endif // FILE_H

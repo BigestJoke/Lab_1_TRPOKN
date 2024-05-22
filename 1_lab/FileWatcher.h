@@ -5,22 +5,24 @@
 #include <QTimer>
 #include <QList>
 #include "File.h"
-#include "FileLogger.h"
 
 class FileWatcher : public QObject {
     Q_OBJECT
 
+signals:
+    void fileChanged(const File &fileData);
+    void fileExistenceChanged(const File &fileData);
+
 public:
-    FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = 0);
+    explicit FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = nullptr);
 
 private slots:
-    void onFileChanged(); // Обработка изменений в файлах
+    void checkFiles();
 
 private:
-    QTimer timer; // Таймер для регулярной проверки состояния файлов
-    QList<File> watchedFiles;// Список отслеживаемых файлов
-    FileLogger logger;
-    int checkIntervalMs;// Интервал проверки состояния файлов
+    QTimer timer;
+    QList<File> watchedFiles;
+    int checkIntervalMs;
 };
 
 #endif // FILEWATCHER_H

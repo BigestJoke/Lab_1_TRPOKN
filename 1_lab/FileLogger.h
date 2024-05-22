@@ -8,11 +8,9 @@
 class FileLogger : public QObject {
     Q_OBJECT
 
-public:
-
-    FileLogger(QObject *parent = 0); // Конструктор
-    void logFileChange(const File &fileData);// Метод логирования при изменении файла
-    void logFileExistence(const File &fileData); // Метод логирования о существовании файла
+public slots:
+    void onFileChanged(const File &fileData);
+    void onFileExistence(const File &fileData);
 };
 
 #endif // FILELOGGER_H
