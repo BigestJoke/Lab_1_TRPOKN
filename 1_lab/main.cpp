@@ -15,11 +15,11 @@ int main(int argc, char *argv[])
 
     // Проверка существования файлов перед созданием FileWatcher
     for (const QString &filePath : filePaths) {
-        File fileData(filePath);
-        if (fileData.exists()) {
-            logger.onFileExistence(fileData);
+        File file(filePath);
+        if (file.exists()) {
+            logger.onFileExistence(file);
         } else {
-            logger.onFileExistence(fileData);
+            logger.onFileExistence(file);
         }
     }
 
