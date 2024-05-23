@@ -1,6 +1,5 @@
 #ifndef FILEWATCHER_H
 #define FILEWATCHER_H
-
 #include <QObject>
 #include <QTimer>
 #include <QList>
@@ -10,11 +9,11 @@ class FileWatcher : public QObject {
     Q_OBJECT
 
 signals:
-    void fileChanged(const File &fileData);
-    void fileExistenceChanged(const File &fileData);
+    void fileChanged(const File &file);
+    void fileExistenceChanged(const File &file);
 
 public:
-    explicit FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = nullptr);
+    FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = 0);
 
 private slots:
     void checkFiles();

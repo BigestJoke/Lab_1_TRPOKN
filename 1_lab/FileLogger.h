@@ -1,6 +1,5 @@
 #ifndef FILELOGGER_H
 #define FILELOGGER_H
-
 #include <QObject>
 #include <QDebug>
 #include "File.h"

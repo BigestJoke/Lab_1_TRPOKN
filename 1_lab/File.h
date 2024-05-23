@@ -1,6 +1,5 @@
 #ifndef FILE_H
 #define FILE_H
-
 #include <QString>
 #include <QFileInfo>
 #include <QDateTime>
@@ -14,7 +13,7 @@ public:
     bool exists() const;
 
 private:
-    QFileInfo fileInfo;
+    QFileInfo fileInfo; //обьект для хранения данных о файле
 };
 
 #endif // FILE_H
