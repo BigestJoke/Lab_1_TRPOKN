@@ -14,6 +14,7 @@ signals:
 
 public:
     FileWatcher(const QStringList &filePaths, int checkIntervalMs, QObject *parent = 0);
+    ~FileWatcher();
 
 private slots:
     void checkFiles();

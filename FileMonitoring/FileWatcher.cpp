@@ -29,3 +29,7 @@ void FileWatcher::checkFiles() {
         }
     }
 }
+
+FileWatcher::~FileWatcher() {
+    timer.stop();
+}
