@@ -8,9 +8,8 @@ class FileLogger : public QObject {
     Q_OBJECT
 
 public slots:
-    //Слоты вывода состояния файла
-    void onFileChanged(const File &file);
-    void onFileExistence(const File &file);
+    void onFileChanged(const File &fileData);
+    void onFileExistence(const File &fileData);
 };
 
-#endif
+#endif // FILELOGGER_H

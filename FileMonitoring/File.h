@@ -6,16 +6,14 @@
 
 class File {
 public:
-    //Методы получения данных о файле
     File(const QString &filePath);
     QString getFilePath() const;
-    int getSize() const;
+    qint64 getSize() const;
     QDateTime getLastModified() const;
     bool exists() const;
 
 private:
-    //обьект для хранения данных о файле
-    QFileInfo fileInfo;
+    QFileInfo fileInfo; //обьект для хранения данных о файле
 };
 
-#endif
+#endif // FILE_H
