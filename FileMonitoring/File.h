@@ -8,7 +8,7 @@ class File {
 public:
     File(const QString &filePath);
     QString getFilePath() const;
-    qint64 getSize() const;
+    int getSize() const;
     QDateTime getLastModified() const;
     bool exists() const;
 
@@ -16,4 +16,4 @@ private:
     QFileInfo fileInfo; //обьект для хранения данных о файле
 };
 
-#endif // FILE_H
+#endif

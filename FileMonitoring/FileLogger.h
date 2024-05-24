@@ -12,4 +12,4 @@ public slots:
     void onFileExistence(const File &fileData);
 };
 
-#endif // FILELOGGER_H
+#endif

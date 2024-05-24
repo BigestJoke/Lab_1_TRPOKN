@@ -24,4 +24,4 @@ private:
     int checkIntervalMs;
 };
 
-#endif // FILEWATCHER_H
+#endif

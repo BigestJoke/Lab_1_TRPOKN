@@ -6,7 +6,7 @@ QString File::getFilePath() const {
     return fileInfo.filePath();
 }
 
-qint64 File::getSize() const {
+int File::getSize() const {
     return fileInfo.size();
 }
 
