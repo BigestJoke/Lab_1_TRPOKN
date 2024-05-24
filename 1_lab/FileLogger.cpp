@@ -1,7 +1,7 @@
 #include "FileLogger.h"
 
-void FileLogger::onFileChanged(const File &fileData) {
-    qDebug() << "File changed:" << fileData.getFilePath() << "Size:" << fileData.getSize();
+void FileLogger::onFileChanged(const File &file) {
+    qDebug() << "File changed:" << file.getFilePath() << "Size:" << file.getSize();
 }
 
 void FileLogger::onFileExistence(const File &fileData) {

@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    //Список файлов для проверки
     QStringList filePaths = {
         "C:/Users/Asus/Desktop/456.txt",
         "C:/Users/Asus/Desktop/123.txt",
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
     // Создание и запуск FileWatcher
     FileWatcher watcher(filePaths, checkIntervalMs);
 
-    // Подключение сигналов от FileWatcher к слотам FileLogger
+    // Подключение сигналов FileWatcher к слотам FileLogger
     QObject::connect(&watcher, &FileWatcher::fileChanged, &logger, &FileLogger::onFileChanged);
     QObject::connect(&watcher, &FileWatcher::fileExistenceChanged, &logger, &FileLogger::onFileExistence);
 

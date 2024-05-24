@@ -9,6 +9,7 @@ class FileWatcher : public QObject {
     Q_OBJECT
 
 signals:
+    //Сигналы об изменении файла
     void fileChanged(const File &file);
     void fileExistenceChanged(const File &file);
 
@@ -24,4 +25,4 @@ private:
     int checkIntervalMs;
 };
 
-#endif // FILEWATCHER_H
+#endif

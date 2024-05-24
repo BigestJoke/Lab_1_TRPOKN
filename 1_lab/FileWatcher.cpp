@@ -17,8 +17,7 @@ void FileWatcher::checkFiles() {
             emit fileExistenceChanged(newFile);
             file = newFile;
         } else if (newFile.exists() &&
-                   (newFile.getLastModified() != file.getLastModified() ||
-                    newFile.getSize() != file.getSize())) {
+                   (newFile.getLastModified() != file.getLastModified() || newFile.getSize() != file.getSize())) {
             emit fileChanged(newFile);
             file = newFile;
         }
