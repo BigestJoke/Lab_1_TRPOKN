@@ -1,17 +1,17 @@
 #include "FileLogger.h"
 using namespace std;
 
-void FileLogger::onFileChanged(const File &fileData) {
+void FileLogger::onFileChanged(const File &file) {
     QTextStream out(stdout);
-    out << "File changed:" << fileData.getFilePath() << "Size:" << fileData.getSize()<< "\n";
+    out << "File was change:" << file.getFilePath()<< " " << "Size:" << file.getSize()<< "\n";
 
 }
 
-void FileLogger::onFileExistence(const File &fileData) {
+void FileLogger::onFileExistence(const File &file) {
     QTextStream out(stdout);
-    if (fileData.exists()) {
-        out<< "File exists:" << fileData.getFilePath() << "Size:" << fileData.getSize() << "\n";
+    if (file.exists()) {
+        out<< "File is exists:" << file.getFilePath() << " " << "Size:" << file.getSize() << "\n";
     } else {
-        out << "File does not exist:" << fileData.getFilePath()<< "\n";
+        out << "File does'nt exist:" << file.getFilePath()<< "\n";
     }
 }
